@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { MdDownloadForOffline } from "react-icons/md";
@@ -13,10 +13,9 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
   const navigate = useNavigate();
   const user = fetchUser();
 
-  const alreadySaved = useMemo(() => {
-    return !!save?.filter((item) => item.postedBy._id === user._id)?.length;
-  }, []);
-
+  const alreadySaved = !!save?.filter(
+    (item) => item?.postedBy?._id === user?._id
+  )?.length;
   const savePin = (id) => {
     if (!alreadySaved) {
       client
@@ -25,8 +24,8 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user._id,
-            postedBy: { _type: "postedBy", _ref: user._id },
+            userId: user?._id,
+            postedBy: { _type: "postedBy", _ref: user?._id },
           },
         ])
         .commit()
@@ -111,7 +110,7 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
                     : destination}
                 </a>
               )}
-              {postedBy?._id === user._id && (
+              {postedBy?._id === user?._id && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -128,7 +127,7 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
         )}
       </div>
       <Link
-        to={`user-profile/${postedBy?._id}`}
+        to={`/user-profile/${postedBy?._id}`}
         className="flex gap-2 mt-2 items-center"
       >
         <img
