@@ -65,10 +65,10 @@ function UserProfile() {
             <img
               src={randomImage}
               alt="banner-pic"
-              className="w-full h-370 2xl:h-510 shodow-lg object-cover"
+              className="w-full h-370 2xl:h-510 shadow-lg object-cover"
             />
             <img
-              src={user.image}
+              src={user?.image}
               alt="user-pic"
               className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover"
             />
@@ -79,7 +79,7 @@ function UserProfile() {
               {userId === user._id && (
                 <button
                   type="button"
-                  className="bg-white p-2 rounded-full cursor-pointer outline-non shadow-md"
+                  className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                   onClick={() => {
                     googleLogout();
                     localStorage.clear();

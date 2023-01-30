@@ -5,7 +5,6 @@ import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
 import jwt_decode from "jwt-decode";
 import { client } from "../client";
-import { FcGoogle } from "react-icons/fc";
 
 function Login() {
   const navigate = useNavigate();
@@ -48,15 +47,6 @@ function Login() {
           </div>
           <div className="shadow-2xl">
             <GoogleLogin
-              render={(renderProps) => (
-                <button
-                  type="button"
-                  onClick={renderProps.onClick}
-                  className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
-                >
-                  <FcGoogle className="mr-4" /> Sign in with Google
-                </button>
-              )}
               onSuccess={(response) => createOrGetUser(response)}
               onError={() => console.log("Error")}
             />

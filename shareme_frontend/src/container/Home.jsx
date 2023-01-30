@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HiMenu } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
@@ -13,7 +13,6 @@ import { fetchUser } from "../utils/fetchUser";
 function Home() {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
-  const scrollRef = useRef(null);
   const userInfo = fetchUser();
 
   useEffect(() => {
@@ -22,10 +21,6 @@ function Home() {
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  }, []);
-
-  useEffect(() => {
-    scrollRef.current.scrollTo(0, 0);
   }, []);
 
   return (
@@ -60,7 +55,7 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      <div className="pb-2 flex-1 h-screen overflow-y-auto">
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />

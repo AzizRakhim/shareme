@@ -16,6 +16,7 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
   const alreadySaved = !!save?.filter(
     (item) => item?.postedBy?._id === user?._id
   )?.length;
+
   const savePin = (id) => {
     if (!alreadySaved) {
       client
@@ -54,7 +55,7 @@ function Pin({ pin: { postedBy, image, _id, destination, save } }) {
           alt="user-post"
           className="rounded-lg w-full"
         />
-        {postHovered && (
+        {!postHovered && (
           <div
             className="absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50"
             style={{ height: "100%" }}

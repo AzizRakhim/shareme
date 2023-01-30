@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
-import { IoIosArrowForward } from "react-icons/io";
-
 import logo from "../assets/logo.png";
 import { categories } from "../utils/data";
 
@@ -16,6 +14,7 @@ function Sidebar({ user, closeToggle }) {
   const handleCloseSidebar = () => {
     if (closeToggle) closeToggle(false);
   };
+
   return (
     <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar">
       <div className="flex flex-col">
@@ -66,7 +65,7 @@ function Sidebar({ user, closeToggle }) {
           onClick={handleCloseSidebar}
         >
           <img
-            src={user.image}
+            src={user?.image}
             alt="user-profile"
             className="w-10 h-10 rounded-full"
           />
