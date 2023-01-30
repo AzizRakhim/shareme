@@ -1,5 +1,9 @@
 export const categories = [
   {
+    name: "movies",
+    image: "https://www.freeiconspng.com/thumbs/movie-icon/movie-icon-11.png",
+  },
+  {
     name: "cars",
     image:
       "https://i.pinimg.com/750x/eb/47/44/eb4744eaa3b3ccd89749fa3470e2b0de.jpg",
