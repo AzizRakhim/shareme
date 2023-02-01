@@ -66,7 +66,7 @@ function PinDetail({ user }) {
   return (
     <>
       <div
-        className="flex xl-flex-row flex-col m-auto bg-whtie"
+        className="flex xl-flex-row flex-col m-auto bg-white"
         style={{ maxWidth: "1500px", borderRadius: "32px" }}
       >
         <div className="flex justify-center items-center md:items-start flex-initial">
@@ -82,7 +82,6 @@ function PinDetail({ user }) {
               <a
                 href={`${pinDetail.image?.asset?.url}?dl=`}
                 download
-                onClick={(e) => e.stopPropagation()}
                 className="bg-white w-9 h-9 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
               >
                 <MdDownloadForOffline />
@@ -105,7 +104,7 @@ function PinDetail({ user }) {
             className="flex gap-2 mt-5 items-center bg-white rounded-lg"
           >
             <img
-              src={pinDetail.postedBy?.image}
+              src={pinDetail?.postedBy?.image}
               alt="user-profile"
               className="w-8 h-8 rounded-full object-cover"
             />
